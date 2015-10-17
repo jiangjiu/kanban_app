@@ -16,4 +16,5 @@ module.exports = {
             title: 'Kanban  app'
         })
     ]
+
 };
