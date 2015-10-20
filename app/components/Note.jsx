@@ -8,6 +8,7 @@ export default class Note extends React.Component {
         this.renderTask = this.renderTask.bind(this);
         this.checkEnter = this.checkEnter.bind(this);
         this.finishEdit = this.finishEdit.bind(this);
+        this.renderDelete = this.renderDelete.bind(this);
 
         this.state = {
             editing: false
@@ -18,7 +19,7 @@ export default class Note extends React.Component {
         const editing = this.state.editing;
         return (
             <div>
-                {editing ? this.renderEdit : this.renderTask}
+                {editing ? this.renderEdit() : this.renderTask()}
             </div>
         );
     }
@@ -28,12 +29,18 @@ export default class Note extends React.Component {
             autoFocus={true}
             defaultValue={this.props.task}
             onBlur={this.finishEdit}
-            onKeyPress={this.checkEnter}
-            />
+            onKeyPress={this.checkEnter}/>
     }
 
     renderTask() {
-        return <div onClick={this.edit}>{this.props.task}</div>
+        const onDelete = this.props.onDelete;
+
+        return (
+            <div onClick={this.edit}>
+            <span className='task'>{this.props.task}</span>
+            {onDelete ? this.renderDelete() : null}
+        </div>
+        );
     }
 
     edit() {
@@ -53,5 +60,9 @@ export default class Note extends React.Component {
         this.setState({
             editing: false
         })
+    }
+
+    renderDelete() {
+        return <button className='delete' onClick={this.props.onDelete}>X</button>;
     }
 }

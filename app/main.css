@@ -1,3 +1,54 @@
-body{
+html {
+    font-size: 62.5%;
+}
+
+body {
     background: #d8d8d8;
+    font-family: sans-serif;
+    font-size: 2rem;
+}
+
+.add-note {
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.notes {
+    list-style: none;
+    margin: 1rem;
+    padding-left: 0;
+    max-width: 20rem;
+}
+
+.note {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fdfdfd;
+    box-shadow: 0 0 0.5rem 0.03rem rgba(0, 0, 0, 0.3);
+}
+
+.note:hover {
+    box-shadow: 0 0 0.5rem 0.03rem rgba(0, 0, 0, 0.7);
+    transition: 0.6s;
+}
+
+.note .task {
+    display: inline-block;
+}
+
+.note .delete {
+    float: right;
+
+    padding: 0.5rem;
+
+    background-color: #fdfdfd;
+    border: none;
+
+    cursor: pointer;
+
+    visibility: hidden;
+}
+.note:hover .delete {
+    visibility: visible;
 }
