@@ -49,6 +49,7 @@ body {
 
     visibility: hidden;
 }
+
 .note:hover .delete {
     visibility: visible;
 }
