@@ -21,9 +21,7 @@ export default class App extends React.Component {
     }
 
     storeChanged(state) {
-        this.setState({
-            state: state
-        });
+        this.setState(state);
     }
 
     render() {
