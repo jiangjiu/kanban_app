@@ -1,12 +1,17 @@
 import uuid from 'node-uuid';
 import alt from '../libs/alt.js';
 import NoteActions from '../actions/NoteActions.js';
+import uuid from 'node-uuid';
 
 class NoteStore {
     constructor() {
         this.bindActions(NoteActions);
 
         this.notes = [];
+
+        this.exportPublicMethods({
+            get: this.get.bind(this)
+        })
     }
 
     create(note) {
@@ -50,6 +55,9 @@ class NoteStore {
             console.warn('Failed to find note', notes, id);
         }
         return noteIndex;
+    }
+    get(ids) {
+        return(ids || []).map((id) => this.notes[this.findNote(id)].filter((a) => a));
     }
 }
 
